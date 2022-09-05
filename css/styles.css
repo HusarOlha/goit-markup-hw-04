@@ -12,6 +12,7 @@
   --background-second-color: rgba(255, 255, 255, 0.1);
   --sec-border-color: #afb1b8;
   --hero-background-color: rgba(47, 48, 58, 0.4);
+  --background-opacity-color: rgba(33, 150, 243, 0.9);
 }
 
 /* Колір основного тексту #212121 */
@@ -105,6 +106,7 @@ img {
   font-weight: 700;
   line-height: 1.19;
   text-decoration: none;
+  transition: color 250ms, cubic-bezier(0.4, 0, 0.2, 1);
 }
 .logo .accent {
   font-family: Raleway;
@@ -153,6 +155,21 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+  position: relative;
+  transition: color 250ms, cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-nav .link.current::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: var(--accent-color);
+  bottom: 0px;
+  left: 0px;
+  
 }
 
 .site-nav .link.current {
@@ -185,6 +202,7 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-decoration: none;
+  transition: color 250ms, cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-icon {
@@ -229,6 +247,45 @@ img {
   line-height: 1.16;
   text-align: center;
   margin-bottom: 50px;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  width: 528px;
+  height: 581px;
+  background-color: var(--primary-text-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.end-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 8px;
+  left: 490px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary-text-color);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Features */
@@ -281,6 +338,33 @@ img {
 
 .work-item {
   flex-basis: calc((100% - 60px) / 3);
+}
+
+.work-wrap {
+  position: relative;
+}
+
+.wrap-text {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 224px;
+  bottom: 0;
+  right: 0;
+  width: 370px;
+  height: 70px;
+  background-color: rgba(47, 48, 58, 0.8);
+  margin: 0;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--primary-text-color);
+
+  transform: translateY(0);
 }
 
 /* .work-item:nth-child(3) {
@@ -356,6 +440,7 @@ img {
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
+  transition: color 250ms, background-color 250ms, cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-item {
@@ -394,6 +479,9 @@ img {
   width: 370px;
   margin-right: 30px;
   margin-bottom: 30px;
+  transition: box-shadow;
+  box-shadow 250ms, cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);;
 }
 
 .portfolio-item:hover {
@@ -433,6 +521,33 @@ img {
   letter-spacing: 0.03em;
 }
 
+.port-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-opacity-color);
+  padding: 63px 24px;
+
+  color: var(--primary-text-color);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.portfolio-item:hover .wrapper-text {
+  transform: translateY(0);
+}
+
 /* linki */
 .team-icon {
   display: flex;
@@ -454,6 +569,7 @@ img {
   height: 44px;
   color: var(--sec-border-color);
   border-radius: 50%;
+  transition:  color 250ms, background-color 250ms, border-radius 250ms, cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-team {
@@ -486,6 +602,7 @@ img {
   border: 1px solid var(--sec-border-color);
   border-radius: 5px;
   color: var(--sec-border-color);
+  transition: color 250ms, border 250ms, cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-icon {
@@ -549,6 +666,7 @@ img {
   font-size: 14px;
   line-height: 1.7;
   text-decoration: none;
+  transition: color 250ms, cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address-cont:hover,
@@ -589,6 +707,7 @@ img {
   border-radius: 50%;
   background-color: var(--background-second-color);
   color: var(--primary-text-color);
+  transition: color 250ms, background-color 250ms, cubic-bezier(0.4, 0, 0.2, 1);
 }
 .join-icon {
   fill: currentColor;
